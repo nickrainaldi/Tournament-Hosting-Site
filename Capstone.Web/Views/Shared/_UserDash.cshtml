@@ -1,0 +1,238 @@
+﻿@model Capstone.Web.Models.TournamentHolder
+@{
+    ViewBag.Title = "UserDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var email = Session["email"];
+}
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="~/Content/Dashboard.css" rel="stylesheet" />
+<script src="~/Scripts/TournamentDetail.js"></script>
+
+<script>
+$(document).ready(function() {
+  //Set the carousel options
+  $('#quote-carousel').carousel({
+    pause: true,
+    interval: 4000,
+  });
+});
+</script>
+
+
+<div id="headdiv2">
+
+
+    <img id="dashpic2" style="max-width: 200px;" data-animation="animated zoomInLeft" src="http://s20.postimg.org/9vf8xngel/internet_speed.png">
+    <h2 id="dashtext2">User DashBoard</h2>
+
+    <h3 id="welcome">Welcome, @email!</h3>
+
+    @*@using (Html.BeginForm("MakeTournament", "Home", FormMethod.Get))
+        {
+            <input type="button" value="Make a Tournament"/>
+        }*@
+</div>
+
+
+<div id="leftcontain" class="container">
+    <div class="row">
+        <div id="heading"class='col-md-offset-2 col-md-8 text-center'>
+            <h2>Quick Tips</h2>
+        </div>
+    </div>
+    <div class='row'>
+        <div id="leftthing" class='col-md-offset-2 col-md-8'>
+            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                <!-- Bottom Carousel Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#quote-carousel" data-slide-to="1"></li>
+                    <li data-target="#quote-carousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Carousel Slides / Quotes -->
+                <div class="carousel-inner">
+
+                    <!-- Quote 1 -->
+                    <div class="item active">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                 
+                                    <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
+                                    <small>Someone famous</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <!-- Quote 2 -->
+                    <div class="item">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                   
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>
+                                    <small>Someone famous</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                    <!-- Quote 3 -->
+                    <div class="item">
+                        <blockquote>
+                            <div class="row">
+                                <div class="col-sm-3 text-center">
+                                    
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
+                                    <small>Someone famous</small>
+                                </div>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Carousel Buttons Next/Prev -->
+                <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div id="contain" class="container">
+
+    <h1 id="hosted">
+        <span id="header">Hosted Tournaments</span>
+
+        @using (Html.BeginForm("MakeTournament", "Home", FormMethod.Get, new { @class = "form" }))
+        {
+            <button class="btn" id="buttonstuff" type="submit" name="button">Make a Tournament</button>
+        }
+
+    </h1>
+
+    <div id="mycontainer" class="container">
+        <table id="mytable" class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Participants</th>
+                    <th>Start Date</th>
+                    <th>Tournament Type</th>
+                    <th>Tournament Code</th>
+                    <th>Full Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ownerList)
+            {
+                    <tr>
+                        <td>
+                            @*@Html.ActionLink(item.name, "_TournDetail",null , new { url = item.full_challonge_url, @class="modalbutton" })*@
+                            <a href="#" class="modalbutton" data-url="@item.full_challonge_url">@item.name</a>
+                        </td>
+                        <td>
+                            @item.signup_cap
+                        </td>
+                        <td>
+                            @item.start_at
+                        </td>
+                        <td>
+                            @item.tournament_type
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+    <h1 id="hosted">
+        <span id="header">Tournaments I'm In</span>
+
+        @using (Html.BeginForm("JoinTournament", "Home", FormMethod.Get, new { @class = "form" }))
+            {
+            <button class="btn" id="buttonstuff" type="submit" name="button">Join a Tournament</button>
+        }
+    </h1>
+
+
+
+    <div id="mycontainer" class="container">
+        <table id="mytable" class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Something</th>
+                    <th>Stuff</th>
+                    <th>Other</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.participantList)
+            {
+                    <tr>
+                        <td>
+                            
+                                @Html.ActionLink(item.name, "TournamentDetail", "Home", new { id = item.id }, null)
+                            
+                        </td>
+
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div id="modal" class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Bracket Quick View</h3>
+            </div>
+            <div class="modal-body" style="background-color:white;">
+               
+                <div class="wrapper">
+                    <div id="hidelogo"></div>
+                    <iframe class="frame" src="" style="zoom:0.60" width="100%" height="1000px" frameborder="0">
+
+                    </iframe>
+          
+                 
+                
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

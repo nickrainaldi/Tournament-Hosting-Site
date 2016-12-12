@@ -1,0 +1,282 @@
+﻿@model Capstone.Web.Models.TournamentHolder
+@{
+    ViewBag.Title = "UserDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var email = Session["email"];
+    var username = Session["UserName"];
+}
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="~/Content/Dashboard.css" rel="stylesheet" />
+<script src="~/Scripts/TournamentDetail.js"></script>
+
+<script>
+    $(document).ready(function () {
+        //Set the carousel options
+        $('#quote-carousel').carousel({
+            pause: true,
+            interval: 4000,
+        });
+    });
+</script>
+
+
+<div id="headdiv2">
+    <a href="@Url.Action("Logout", "Home")">
+        <button id="loginbutton" type="button" class="btn btn-primary">Logout</button>
+    </a>
+
+    <img id="dashpic2" style="max-width: 200px;" data-animation="animated zoomInLeft" src="http://s20.postimg.org/9vf8xngel/internet_speed.png">
+    <h2 id="dashtext2">User DashBoard</h2>
+
+    <h3 id="welcome">Welcome, @username!</h3>
+
+    @*@using (Html.BeginForm("MakeTournament", "Home", FormMethod.Get))
+        {
+            <input type="button" value="Make a Tournament"/>
+        }*@
+</div>
+
+
+<div id="bigcontain" class="container-fluid">
+    <div id="left">
+
+        <div id="row" class='row'>
+
+            <div id="caro" class='col-lg-6 col-md-6'>
+
+                <h2 id="header">Quick Tips</h2>
+                <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                    <!-- Bottom Carousel Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#quote-carousel" data-slide-to="1"></li>
+                        <li data-target="#quote-carousel" data-slide-to="2"></li>
+                        <li data-target="#quote-carousel" data-slide-to="3"></li>
+                    </ol>
+                    <!-- Carousel Slides / Quotes -->
+                    <div class="carousel-inner">
+                        <!-- Quote 1 -->
+                        <div class="item active">
+
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <p class="notes">Click on the name of your tournament to see a quick view of the bracket!</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Quote 2 -->
+                        <div class="item">
+
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="notes">Click on the details link to see a full list of available details and options for your tournament!</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Quote 3 -->
+                        <div class="item">
+
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="notes">You can join a tournament using the tournament ID under the "Join a Tournament" button!</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="item">
+
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="notes">You can make a Tournament with individuals invites or add names in bulk!</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Carousel Buttons Next/Prev -->
+                    <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                    <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div id="contain" class="col-lg-6">
+
+                <h1 id="hosted">
+                    <span id="header">Hosted Tournaments</span>
+
+                    @using (Html.BeginForm("MakeTournament", "Home", FormMethod.Get, new { @class = "form" }))
+            {
+                        <button class="btn" id="buttonstuff" type="submit" name="button">Make a Tournament</button>
+                    }
+
+                </h1>
+
+                <div id="mycontainer">
+                    <table id="mytable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Participants</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Code</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ownerList)
+                            {
+                                
+                                <tr>
+                                    <td>
+                                        @*@Html.ActionLink(item.name, "_TournDetail",null , new { url = item.full_challonge_url, @class="modalbutton" })*@
+                                        <a href="#" class="modalbutton" data-url="@item.full_challonge_url">@item.name</a>
+                                    </td>
+                                    <td>
+                                        @item.signup_cap
+                                    </td>
+                                    <td>
+                                        @item.start_at.ToShortDateString()
+                                    </td>
+                                    <td>
+                                        @item.tournament_type
+                                    </td>
+                                    <td>
+                                        @item.id
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Details", "TournamentDetail", "Home", new { id = item.id }, null)
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+
+
+                <h1 id="hosted">
+                    <span id="header">Tournaments I'm In</span>
+
+                    @using (Html.BeginForm("JoinTournament", "Home", FormMethod.Get, new { @class = "form" }))
+            {
+                        <button class="btn" id="buttonstuff" type="submit" name="button">Join a Tournament</button>
+                    }
+                </h1>
+
+                
+
+                <div id="mycontainer">
+                    <table id="mytable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Participants</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.participantList)
+            {
+                                <tr>
+                                    <td>
+
+                                        @*@Html.ActionLink(item.name, "TournamentDetail", "Home", new { id = item.id }, null)*@
+                                        <a href="#" class="modalbutton participantModal" data-url="@item.full_challonge_url">@item.name</a>
+
+                                    </td>
+                                    <td>
+                                        @item.signup_cap
+                                    </td>
+                                    <td>
+                                        @item.start_at.ToShortDateString()
+                                    </td>
+                                    <td>
+                                        @item.tournament_type
+                                    </td>
+                                    <td>
+                                        @item.id
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@*<div class="footer navbar-fixed-bottom">
+    <div id="bottom" class="container">
+        words
+        
+    </div>
+
+
+</div>*@
+
+
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div id="modal" class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Bracket Quick View</h3>
+            </div>
+            <div class="modal-body" style="background-color:white;">
+
+                <div class="wrapper">
+                    <div id="hidelogo"></div>
+                    <div id="iframediv">
+                        <iframe class="frame" src="" style="zoom:0.60" width="100%" height="1000px" frameborder="0"></iframe>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+

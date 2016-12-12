@@ -1,0 +1,444 @@
+﻿
+
+body {
+    font-family: 'Open Sans', sans-serif;
+   height:100%;
+}
+
+h2 {
+    margin-top: 0px;
+}
+
+h3 {
+    text-align: center;
+}
+
+#headdiv2 {
+    margin: 0em;
+    background: #FF5F6D; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FF5F6D, #FFC371); 
+    background: linear-gradient(to left, #FF5F6D, #FFC371);  
+    background-color:#696969;
+    height:10.5em;
+    padding-bottom: 1em;
+    text-align:center;
+}
+
+
+#headdiv {
+    margin: 0em;
+    background: #FF5F6D; /* fallback for old browsers 
+    background: -webkit-linear-gradient(to left, #FF5F6D, #FFC371); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FF5F6D, #FFC371); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height:13em;
+    padding-bottom: 1em;
+    text-align:center;
+}
+
+#mycontainer {
+    margin: 0px;
+    
+   
+}
+
+#mytable {
+  
+}
+
+#dashtext {
+    color:white;
+    display:inline-block;
+    margin-top:1.5em;
+    position:relative;
+    right:2.4em;
+}
+
+#dashpic {
+  float:left;
+  padding-left:2em;
+  height:10em;
+  width:auto;
+}
+
+#interdiv {
+    width: 30%;
+    margin: auto;
+}
+/*#contain{
+
+   background:white;
+   height:100%;
+}*/
+
+#dashtext2 {
+    color:white;
+    display:inline-block;
+    margin-top:2em;
+    position:relative;
+    right:2.8em;
+   
+  
+    
+}
+
+#dashpic2 {
+ 
+    float:left;
+  padding-left:2em;
+  padding-top:.5em;
+  height:10em;
+  width:auto;
+
+}
+
+#head{
+    
+    text-align:center;
+    
+}
+
+#welcome{
+
+    text-align:right;
+    margin:0px;
+    color:white;
+    padding-right:1em;
+    padding-top:.2em;
+    z-index:999;
+}
+
+#contain{
+
+   
+    margin-top:3%;
+    display:inline-block;
+    border-left:solid gray;
+    padding-left:2em
+    
+}
+
+h1#hosted{
+
+    display:inline-block;
+    
+    
+}
+
+#buttonstuff{
+
+    display:inline-block;
+    margin-bottom:.3em;
+    background:#FF5F6D;
+    color:white;
+    
+}
+
+
+
+
+.form{
+    display:inline-block;
+}
+#header{
+
+    padding-right:.5em;
+}
+
+
+
+iframe.frame{
+
+    height:500px;
+
+}
+
+#textarea{
+
+    width:127.5%;
+
+
+}
+
+#modal{
+
+    width:200%;
+    margin-right:500px;
+    margin-left:-47%;
+    
+}
+
+
+
+#whites{
+
+    background-color:red;
+    height:100px;
+    
+  
+}
+
+.wrapper{
+
+   
+   position:relative;
+    z-index: 1;
+    
+}
+
+#hidelogo{
+    position: absolute;
+    width:100%;
+    height: 29%;
+    background: white;
+    right: 0px;
+    bottom: -1px;
+    z-index:2000;
+    display: block;
+    color: #fff;
+}
+
+/* carousel */
+#quote-carousel 
+{
+  padding: 0 10px 30px 10px;
+  margin-top: 30px 0px 0px;
+}
+
+/* Control buttons  */
+#quote-carousel .carousel-control
+{
+  background: none;
+  color: #222;
+  font-size: 2.3em;
+  text-shadow: none;
+  margin-top: 30px;
+}
+/* Previous button  */
+#quote-carousel .carousel-control.left 
+{
+  left: -12px;
+}
+/* Next button  */
+#quote-carousel .carousel-control.right 
+{
+  right: -12px !important;
+}
+/* Changes the position of the indicators */
+#quote-carousel .carousel-indicators 
+{
+  right: 50%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+}
+/* Changes the color of the indicators */
+#quote-carousel .carousel-indicators li 
+{
+  background: #c0c0c0;
+}
+#quote-carousel .carousel-indicators .active 
+{
+  background: #333333;
+}
+#quote-carousel img
+{
+  width: 250px;
+  height: 100px
+}
+/* End carousel */
+
+.item blockquote {
+    border-left: none; 
+    margin: 0;
+}
+
+.item blockquote img {
+    margin-bottom: 10px;
+}
+
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+}
+
+
+
+/**
+  MEDIA QUERIES
+*/
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    #quote-carousel 
+    {
+      margin-bottom: 0;
+      padding: 0 40px 30px 40px;
+      margin-top: 30px;
+    }
+    
+}
+
+/* Small devices (tablets, up to 768px) */
+@media (max-width: 768px) { 
+    
+    /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
+    
+    #quote-carousel .carousel-indicators {
+        bottom: -20px !important;  
+    }
+    #quote-carousel .carousel-indicators li {
+        display: inline-block;
+        margin: 0px 5px;
+        width: 15px;
+        height: 15px;
+    }
+    #quote-carousel .carousel-indicators li.active {
+        margin: 0px 5px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+
+#bigcontain{
+    margin:0px;
+    width:100%;
+}
+
+#caro{
+    margin-top:5%;
+
+
+}
+
+.notes{
+
+    font-size:2em;
+     font-family: 'Open Sans', sans-serif;
+     font-weight:normal;
+     text-align:center;
+     
+ 
+}
+
+#header{
+    text-align:center; 
+    margin-bottom:17%;
+}
+
+.footer{
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+   
+}
+#bottom{
+
+    text-align:center;
+}
+
+.detailtitle{
+
+    text-align:center;
+    margin:1em;
+}
+
+#frame{
+
+    margin-left:4%;
+    height:785px;
+    
+
+
+}
+
+.holder{
+   
+    position:relative;
+}
+.frame{
+
+}
+.bar{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:120px;
+    background-color:white;
+    margin-top:675px
+}
+
+#details{
+
+
+   
+   border-left:solid gray;
+   padding:2em;
+   padding-top:0em;
+}
+
+#detailfill{
+   
+
+}
+
+#h4tags{
+
+    margin:1em;
+    border-bottom:solid gray;
+    font-size:2em;
+
+
+}
+
+#ptags{
+
+    margin-left:2em;
+    min-height:1em;
+
+
+}
+
+#button1{
+    margin-top:1em;
+    margin-left:5em;
+    background-color:lightgreen;
+    
+}
+
+#button2{
+    margin-top:1em;
+    background-color:lightcoral
+}
+
+#detailtitle1{
+
+    border-bottom:solid gray;
+    margin-left:8%;
+}
+
+#para{
+
+    margin-left:26%;
+}
+
+#submit{
+    margin:1em;
+    margin-left:150%;
+
+
+}
+
+#textarea2{
+
+    width:160%;
+    margin-left:85%;
+}
+

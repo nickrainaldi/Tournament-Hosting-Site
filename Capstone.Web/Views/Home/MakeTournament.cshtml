@@ -1,0 +1,160 @@
+﻿@model Capstone.Web.Models.NewTournament
+@{
+    ViewBag.Title = "MakeTournament";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="~/Content/Dashboard.css" rel="stylesheet" />
+
+
+<div id="headdiv2">
+
+    <a href="@Url.Action("UserDashboard", "Home")"><img id="dashpic2" src="~/Content/bracketIcon.png" /></a>
+
+    <h2 id="dashtext2">Tournament Creation</h2>
+    <a href="@Url.Action("Logout", "Home")">
+        <button id="loginbutton" type="button" class="btn btn-primary">Logout</button>
+    </a>
+
+
+</div>
+
+<div id="bigcontain" class="container-fluid">
+
+    @using (Html.BeginForm("MakeTournament", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+
+        @*< form class="form-horizontal">*@
+        <fieldset>
+
+            <!-- Form Name -->
+            <h1 id="head">Tournament Details</h1>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Tournament Name">Tournament Name</label>
+                <div class="col-md-5">
+
+
+                    @Html.TextBoxFor(m => m.name, new { @class = "form-control input-md", @id = "Tournament Name", @name = "Tournament Name", @type = "text", @placeholder = "Tournament Name" })
+                    @Html.ValidationMessageFor(m => m.name)
+                </div>
+            </div>
+
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Type">Tournament Type</label>
+                <div class="col-md-5">
+
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Single Elimination",
+                            Value = "single elimination"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Double Elimination",
+                            Value = "double elimination",
+                            Selected = true
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Round Robin",
+                            Value = "round robin"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Swiss",
+                            Value = "swiss"
+                        });
+                    }
+
+
+                    @Html.DropDownListFor(m => m.tournament_type, listItems, new { @id = "Type", @name = "Type", @class = "form-control" })
+
+
+                    @*<select id="Type" name="Type" class="form-control">
+                            <option value="single">Single Elimination</option>
+                            <option value="double">Double Elimination</option>
+                            <option value="round robin">Round Robin</option>
+                            <option value="swiss">Swiss</option>
+                        </select>*@
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Max Number of Participants">Max Number of Participants</label>
+                <div class="col-md-5">
+
+                    @Html.TextBoxFor(m => m.signup_cap, new { @id = "Max Number of Participants", @name = "Max Number of Participants", @type = "text", @placeholder = "eg. 1,2,3,4", @class = "form-control input-md" })
+                    @Html.ValidationMessageFor(m => m.signup_cap)
+                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Date">Start Date</label>
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.start_at, new { @id = "start_at", @name = "start_at", @type = "text", @placeholder = "eg. 03/14/2016", @class = "form-control input-md" })
+
+                    @*<input id="URL" name="URL" type="text" placeholder="URL" class="form-control input-md">*@
+                    <span class="help-block">Please enter date form above</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Tournament Description">Tournament Description</label>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(m => m.description, new { @class = "form-control", @id = "textarea" })
+
+
+
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+
+                <div class="col-md-5">
+                    @Html.HiddenFor(m => m.url)
+                </div>
+            </div>
+
+
+
+            <button class="btn center-block">Submit</button>
+
+        </fieldset>
+        @*</form>*@
+
+                        }
+    <div>
+    </div>
+</div>
+
+
+@*@using (Html.BeginForm("MakeTournament", "Home", FormMethod.Post))
+    {
+
+        <div>
+            @Html.Label("Name", "Tournament Name")
+            @Html.TextBoxFor(m => m.name)
+        </div>
+
+        <div>
+            @Html.Label("Url", "URL")
+            @Html.TextBoxFor(m => m.url)
+        </div>
+        <div>
+            @Html.Label("Type", "Type")
+            @Html.TextBoxFor(m => m.tournament_type)
+        </div>
+
+
+        <button>Submit</button>
+
+    }*@
+

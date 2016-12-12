@@ -1,0 +1,142 @@
+﻿@model ChallongeCSharp.ChallongeTournament
+@{
+    ViewBag.Title = "TournamentDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DateTime date = @Model.start_at;
+}
+
+
+
+<link href="~/Content/Dashboard.css" rel="stylesheet" />
+
+<div id="headdiv2">
+
+    <a href="@Url.Action("UserDashboard", "Home")"><img id="dashpic2" src="~/Content/bracketIcon.png" /></a>
+
+    <h2 id="dashtext2">Tournament Details</h2>
+    <a href="@Url.Action("Logout", "Home")">
+        <button id="loginbutton" type="button" class="btn btn-primary">Logout</button>
+    </a>
+
+
+</div>
+
+
+
+<h2 class="detailtitle">@Model.name</h2>
+
+<div id="bigcontain" class="container-fluid">
+
+    <div class="row">
+
+        <div class="holder">
+            <iframe id="frame" class="frame col-lg-7" src="@Model.full_challonge_url/module?theme=4794" width="80%" height="700px" frameborder="0" scrolling="auto" allowtransparency="true" "></iframe> @*style="pointer-events:none;*@
+            <div class="bar">
+                @using (Html.BeginForm("StartTournament", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+
+
+                    <div class="col-md-4 col-lg-offset-1">
+
+                        @Html.HiddenFor(m => m.id)
+                        <button id="button1" class="btn">StartTournament</button>
+                    </div>
+
+                }
+
+                @using (Html.BeginForm("ResetTournament", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+
+
+                    <div class="col-md-4">
+
+                        @Html.HiddenFor(m => m.id)
+                        <button id="button2" class="btn">ResetTournament</button>
+                    </div>
+
+                }
+            </div>
+        </div>
+
+        <div id="details" class="col-lg-4">
+            <h4 id="h4tags">Tournament Name</h4>
+            <p id="ptags">@Model.name</p>
+
+            <h4 id="h4tags">Tournament Code</h4>
+            <p id="ptags">@Model.id</p>
+
+            <h4 id="h4tags">Tournament Type</h4>
+            <p id="ptags">@Model.tournament_type</p>
+
+            <h4 id="h4tags">Max Participants</h4>
+            <p id="ptags">@Model.signup_cap</p>
+
+
+            <h4 id="h4tags">Start Date</h4>
+            <p id="ptags">@date.ToShortDateString()</p>
+
+            <h4 id="h4tags">Tournament Description</h4>
+            <p id="ptags">@Model.description</p>
+
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 id="detailtitle1" class="detailtitle">Bulk Add Participants</h2>
+
+            <div class="row">
+                <p id="para" class="detailtitle col-lg-6"> Here you can add participant names to the tournament without personal invitations. This is ideal for managing tournaments where participants cannot sign up for accounts.</p>
+                <p id="para" class="detailtitle col-lg-6"> Enter names seperated by spaces. Any space will indicate a new name.</p>
+            </div>
+
+            <div id="detailfill">
+
+
+                @using (Html.BeginForm("CreateParticipants", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+
+
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(m => m.participants, new { @class = "form-control", @id = "textarea2" })
+                        @Html.HiddenFor(m => m.url)
+                        @Html.HiddenFor(m => m.full_challonge_url)
+                        @Html.HiddenFor(m => m.id)
+                        <button id="submit" class="btn">Submit</button>
+                    </div>
+
+
+
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <h2 id="detailtitle1" class="detailtitle">Add Participants By Email</h2>
+        
+        <div class="row">
+            <p id="para" class="detailtitle col-lg-6"> Here you can add participants to the tournament with email invitations that will send the invite code. From here they will log into the site and join tournaments using the code in "Join Tournament".</p>
+            <p id="para" class="detailtitle col-lg-6"> Enter emails seperated by spaces. Any space will indicate a new email.</p>
+        </div>
+
+        <div id="detailfill">
+
+
+            @using (Html.BeginForm("InviteParticipants", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="form-group">
+
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(m => m.emails, new { @class = "form-control", @id = "textarea2" })
+                        @Html.HiddenFor(m => m.id)
+                        <button id="submit" class="btn">Submit</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>

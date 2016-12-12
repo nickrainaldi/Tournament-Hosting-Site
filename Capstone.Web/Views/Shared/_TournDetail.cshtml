@@ -1,0 +1,13 @@
+﻿@model ChallongeCSharp.ChallongeTournament
+@{
+    ViewBag.Title = "TournamentDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Dashboard.css" rel="stylesheet" />
+<h2>TournamentDetail</h2>
+
+
+<div id="iframediv">
+    <iframe class="frame hiddeniframe" src="@Model.full_challonge_url/module?theme=4790" width="100%" frameborder="0" scrolling="auto" allowtransparency="true"></iframe> @*style="pointer-events:none;*@
+</div>
+

@@ -1,0 +1,73 @@
+﻿@model Capstone.Web.Models.JoinTournament
+@{
+    ViewBag.Title = "JoinTournament";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="~/Content/Dashboard.css" rel="stylesheet" />
+
+
+<div id="headdiv2">
+
+    <a href="@Url.Action("UserDashboard", "Home")"><img id="dashpic2" src="~/Content/bracketIcon.png" /></a>
+
+    <h2 id="dashtext2">Join Tournament</h2>
+    <a href="@Url.Action("Logout", "Home")">
+        <button id="loginbutton" type="button" class="btn btn-primary">Logout</button>
+    </a>
+
+
+</div>
+
+<div id="bigcontain" class="container-fluid">
+
+    @using (Html.BeginForm("JoinTournament", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+
+        @*< form class="form-horizontal">*@
+        <fieldset>
+
+            <!-- Form Name -->
+            <h1 id="head">Tournament Details</h1>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Tournament Name">Tournament Display Name</label>
+                <div class="col-md-5">
+
+
+                    @Html.TextBoxFor(m => m.name, new { @class = "form-control input-md", @id = "Tournament Name", @name = "Tournament Name", @type = "text", @placeholder = "Tournament Name" })
+                    @*<input id="Tournament Name" name="Tournament Name" type="text" placeholder="Tournament Name" class="form-control input-md">*@
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="URL">Tournament ID</label>
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.url, new { @id = "URL", @name = "URL", @type = "text", @placeholder = "Tournament ID", @class = "form-control input-md" })
+
+                    @*<input id="URL" name="URL" type="text" placeholder="URL" class="form-control input-md">*@
+                    <span class="help-block">* Given in the creator's dashboard table, or email invitation.</span>
+                </div>
+            </div>
+
+
+
+            <button class="btn center-block">Submit</button>
+
+        </fieldset>
+
+
+    }
+</div>
+
+
+
+
+
+
+
+
